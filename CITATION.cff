@@ -1,8 +1,9 @@
 cff-version: 1.2.0
-message: "Public source code; this metadata prepares proposed v1.0.0, whose tag and GitHub Release have not been created. The preferred paper citation remains unpublished."
+message: "Public research source code, released as stable v1.0.0. The preferred paper citation remains unpublished; software release does not imply manuscript publication or acceptance."
 type: software
 title: "Physics-Guided ML for Ni-Based Alloy Creep"
 version: "1.0.0"
+date-released: "2026-10-09"
 repository-code: "https://github.com/winsert-sudo/Ni_Alloy_Creep_Physics_Guided_ML"
 license: BSD-3-Clause
 authors:
