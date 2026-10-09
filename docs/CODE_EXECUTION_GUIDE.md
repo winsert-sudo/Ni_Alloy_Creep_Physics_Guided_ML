@@ -1,8 +1,8 @@
 # Code execution and verification guide
 
-These instructions distinguish non-scientific candidate verification from possible future execution with lawful private inputs. No model, figure or manuscript pipeline was run during remediation. Original algorithms and outputs were retained in reviewed copies; all future generated outputs remain private.
+These instructions distinguish non-scientific source-package verification from possible future execution with lawful private inputs. The unchanged verifier inventories all files and includes `.git` when invoked in a clone. Export only tracked files with `git archive HEAD` into a separate clean directory and run the integrity commands there; do not change or include Git administrative files in the package manifest. No model, figure or manuscript pipeline was run during remediation. Original algorithms and outputs were retained in reviewed copies; all future generated outputs remain private.
 
-From the candidate root, summary/integrity verification requires only Python's standard library:
+From a clean source archive/export root without `.git`, summary/integrity verification requires only Python's standard library:
 
 ```bash
 python -B src/evaluation/verify_public_summaries.py

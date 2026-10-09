@@ -1,6 +1,6 @@
 # Reproducibility limits
 
-1. Public code inspection and package verification: syntax, CLI preflight and aggregate/checksum inspection are supported by staged code. Installation specifications are provided; the internal final candidate is licensed under BSD-3-Clause and approved for later release, but publication has not occurred.
+1. Public code inspection and package verification: syntax, CLI preflight and aggregate/checksum inspection are supported by staged code. Installation specifications are provided; the source code is publicly available under BSD-3-Clause at https://github.com/winsert-sudo/Ni_Alloy_Creep_Physics_Guided_ML. A versioned `v1.0.0` release is proposed and has not been created.
 2. Full benchmark execution: conditional on lawful exact input tables, the frozen source-aware split map, dependencies and ancillary audit inputs. These restricted rows and assignments are excluded. Fresh grouped splits on independently supplied records support independent workflows but do not demonstrate reproduction of the published values.
 
 Public-only exact numerical reproduction is unavailable. Method reproducibility is conditional; aggregate result verification is partial. No model training, prediction recomputation or scientific figure generation took place during C4. The full headline script additionally consumes lawful error/coverage audits whose original source-specific construction is not completely supplied. See docs/CODE_EXECUTION_GUIDE.md and src/CODE_INPUTS.json.

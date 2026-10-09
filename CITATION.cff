@@ -1,8 +1,9 @@
 cff-version: 1.2.0
-message: "Internal candidate only; cite confirmed paper metadata when a publication record becomes available."
+message: "Public source code; this metadata prepares proposed v1.0.0, whose tag and GitHub Release have not been created. The preferred paper citation remains unpublished."
 type: software
-title: "Paper 1 restricted public repository candidate"
-version: "1.0-candidate"
+title: "Physics-Guided ML for Ni-Based Alloy Creep"
+version: "1.0.0"
+repository-code: "https://github.com/winsert-sudo/Ni_Alloy_Creep_Physics_Guided_ML"
 license: BSD-3-Clause
 authors:
   - family-names: "Wang"

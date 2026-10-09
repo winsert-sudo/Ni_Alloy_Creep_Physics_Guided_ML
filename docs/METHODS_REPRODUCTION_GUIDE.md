@@ -15,7 +15,7 @@ The fixed XGBoost settings are n_estimators=500, max_depth=4, learning_rate=0.03
 
 | Reproduction level | Current status | Practical scope |
 |---|---|---|
-| Level 1: method/workflow reproduction | CONDITIONAL | Method, schema and environment documented; 14 scientifically equivalent reviewed copies are staged with operational path/dependency cleanup; author license/release decision, complete source citations, lawful compatible inputs and clean numerical execution remain unresolved. |
+| Level 1: method/workflow reproduction | CONDITIONAL | Method, schema and environment documented; 14 scientifically equivalent reviewed copies are staged with operational path/dependency cleanup; BSD-3-Clause source publication is complete, while complete source citations, lawful compatible inputs and clean public numerical execution remain unresolved. |
 | Level 2: verification against summaries | PARTIAL | Inspect frozen aggregate results and package checksums; cannot recompute OOF metrics or source assignments without withheld rows. |
 | Level 3: exact numerical reproduction from public files alone | NO | The exact model-ready rows, immutable linked folds and two ancillary audit inputs are excluded. |
 

@@ -2,7 +2,7 @@
 
 ## Frozen modeling table
 
-The referenced table `baseline_creep_dataset_v1p1.csv` has 914 rows and 36 columns. It is not copied into this release candidate pending the rights review.
+The referenced table `baseline_creep_dataset_v1p1.csv` has 914 rows and 36 columns. It is not included in this public source-code repository because numerical redistribution has not been cleared.
 
 | Field | Type | Meaning / unit | Lineage |
 |---|---|---|---|
