@@ -1,0 +1,17 @@
+name: paper1-creep-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.14
+  - numpy=2.5.3
+  - pandas=3.0.5
+  - scipy=1.18.0
+  - scikit-learn=1.9.1
+  - matplotlib=3.11.1
+  - xgboost=3.4.1
+  - seaborn=0.13.2
+  - joblib=1.6.0
+  - pyyaml=6.0.3
+  # Required by pandas.DataFrame.to_markdown in the frozen training script.
+  - tabulate=0.10.0
+

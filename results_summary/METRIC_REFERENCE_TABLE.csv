@@ -1,0 +1,5 @@
+analysis,feature_set,model,evaluation_domain,n_oof,metric,frozen_full_precision,frozen_rounded,unit,reproduction_difference,status
+tier1_physics,P3-replace,XGBoost,Tier 1,220,R2,0.7497006307687231,0.7497,dimensionless,0.0,PASS
+tier1_physics,P3-replace,XGBoost,Tier 1,220,MAE,0.3592029929766931,0.3592,log10(h),0.0,PASS
+tier1_physics,P3-replace,XGBoost,Tier 1,220,RMSE,0.4930923099654113,0.4931,log10(h),0.0,PASS
+

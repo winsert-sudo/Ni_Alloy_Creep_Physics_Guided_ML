@@ -1,0 +1,13 @@
+{
+  "dataset": "baseline_creep_dataset_v1p1.csv",
+  "splits": "source_groupkfold_5fold_assignment.csv",
+  "target": "target_log10_rupture_life_h",
+  "outer_fit_only": true,
+  "models": {
+    "A0": "bounded linear Arrhenius-stress",
+    "A1": "A0 plus logstress/T",
+    "L1": "fitted-C Larson-Miller"
+  },
+  "source_overlap": 0,
+  "candidate_input_status": "Referenced source-derived dataset and linked folds are excluded; this is a recorded configuration, not an executable pipeline."
+}

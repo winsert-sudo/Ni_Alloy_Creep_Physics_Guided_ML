@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "Internal candidate only; cite confirmed paper metadata when a publication record becomes available."
+type: software
+title: "Paper 1 restricted public repository candidate"
+version: "1.0-candidate"
+license: BSD-3-Clause
+authors:
+  - family-names: "Wang"
+    given-names: "Chengbin"
+  - family-names: "Ning"
+    given-names: "Bo-Yuan"
+  - family-names: "Wang"
+    given-names: "Wanxia"
+  - family-names: "Zhang"
+    given-names: "Wei"
+  - family-names: "Zhu"
+    given-names: "Zhenbo"
+  - family-names: "Lu"
+    given-names: "Yanling"
+  - family-names: "Huang"
+    given-names: "Hefei"
+preferred-citation:
+  type: unpublished
+  title: "Physics-Guided Machine Learning for Source-Aware Cross-Alloy Creep Rupture Prediction: Evidence for Unresolved Material-State-Related Variability"
+  authors:
+    - family-names: "Wang"
+      given-names: "Chengbin"
+    - family-names: "Ning"
+      given-names: "Bo-Yuan"
+    - family-names: "Wang"
+      given-names: "Wanxia"
+    - family-names: "Zhang"
+      given-names: "Wei"
+    - family-names: "Zhu"
+      given-names: "Zhenbo"
+    - family-names: "Lu"
+      given-names: "Yanling"
+    - family-names: "Huang"
+      given-names: "Hefei"

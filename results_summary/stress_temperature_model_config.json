@@ -1,0 +1,140 @@
+{
+  "dataset": "baseline_creep_dataset_v1p1.csv",
+  "split": "source_groupkfold_5fold_assignment.csv",
+  "target": "target_log10_rupture_life_h",
+  "target_derived_features_used": false,
+  "best_physics_feature_set": "P3-replace",
+  "tier1_selection_metric": "XGBoost pooled OOF R2",
+  "feature_sets": {
+    "P0": {
+      "numeric": [
+        "temperature_K",
+        "stress_MPa",
+        "log_temperature_K",
+        "log_stress_MPa",
+        "Ni_reconstructed_wt",
+        "Cr",
+        "Mo",
+        "Fe",
+        "Co",
+        "W",
+        "Nb",
+        "Ti",
+        "Al",
+        "C",
+        "B"
+      ],
+      "categorical": [
+        "alloy_family",
+        "base_alloy",
+        "heat_treatment_id"
+      ]
+    },
+    "P1": {
+      "numeric": [
+        "temperature_K",
+        "stress_MPa",
+        "log_temperature_K",
+        "log_stress_MPa",
+        "Ni_reconstructed_wt",
+        "Cr",
+        "Mo",
+        "Fe",
+        "Co",
+        "W",
+        "Nb",
+        "Ti",
+        "Al",
+        "C",
+        "B",
+        "phys_invT_Kinv"
+      ],
+      "categorical": [
+        "alloy_family",
+        "base_alloy",
+        "heat_treatment_id"
+      ]
+    },
+    "P2": {
+      "numeric": [
+        "temperature_K",
+        "stress_MPa",
+        "log_temperature_K",
+        "log_stress_MPa",
+        "Ni_reconstructed_wt",
+        "Cr",
+        "Mo",
+        "Fe",
+        "Co",
+        "W",
+        "Nb",
+        "Ti",
+        "Al",
+        "C",
+        "B",
+        "phys_invT_Kinv",
+        "phys_stress_over_T_MPa_per_K",
+        "phys_logstress_over_T_Kinv"
+      ],
+      "categorical": [
+        "alloy_family",
+        "base_alloy",
+        "heat_treatment_id"
+      ]
+    },
+    "P3-add": {
+      "numeric": [
+        "temperature_K",
+        "stress_MPa",
+        "log_temperature_K",
+        "log_stress_MPa",
+        "Ni_reconstructed_wt",
+        "Cr",
+        "Mo",
+        "Fe",
+        "Co",
+        "W",
+        "Nb",
+        "Ti",
+        "Al",
+        "C",
+        "B",
+        "phys_invT_Kinv",
+        "phys_stress_over_T_MPa_per_K",
+        "phys_logstress_over_T_Kinv",
+        "phys_zT_zStress"
+      ],
+      "categorical": [
+        "alloy_family",
+        "base_alloy",
+        "heat_treatment_id"
+      ]
+    },
+    "P3-replace": {
+      "numeric": [
+        "Ni_reconstructed_wt",
+        "Cr",
+        "Mo",
+        "Fe",
+        "Co",
+        "W",
+        "Nb",
+        "Ti",
+        "Al",
+        "C",
+        "B",
+        "phys_invT_Kinv",
+        "phys_stress_over_T_MPa_per_K",
+        "phys_logstress_over_T_Kinv",
+        "phys_zT_zStress"
+      ],
+      "categorical": [
+        "alloy_family",
+        "base_alloy",
+        "heat_treatment_id"
+      ]
+    }
+  },
+  "source_leakage_passed": true,
+  "candidate_input_status": "Referenced source-derived dataset and linked folds are excluded; this is a recorded configuration, not an executable pipeline."
+}

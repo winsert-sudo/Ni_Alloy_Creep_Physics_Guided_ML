@@ -1,0 +1,12 @@
+model_name,feature_set,model_family,validation_protocol,n_samples,R2,MAE,RMSE,notes
+P3-replace XGBoost,P3-replace target-free stress-temperature representation,Tree ML,5-fold source-aware grouped pooled OOF,220,0.7497006308,0.3592029930,0.4930923100,PRIMARY HEADLINE MODEL
+XGBoost baseline,A1 core physical,Tree ML,5-fold source-aware grouped pooled OOF,220,0.7254395028,0.3830296272,0.5164370340,Headline-comparable baseline
+Random Forest,A1 core physical,Tree ML,5-fold source-aware grouped pooled OOF,220,0.6575652684,0.4444167802,0.5767495380,Headline-comparable baseline
+Ridge,A1 core physical,Linear ML,5-fold source-aware grouped pooled OOF,220,0.6227994693,0.4600759759,0.6053192698,Headline-comparable baseline
+A1,A1 Arrhenius-stress interaction,Classical physics,5-fold source-aware grouped pooled OOF,220,0.4801863845,0.5834654933,0.7105950491,Physics reference; not a universal law
+L1,Fitted-C Larson-Miller reparameterization,Classical physics,5-fold source-aware grouped pooled OOF,220,0.4801863845,0.5834654933,0.7105950491,Equivalent predictions to A1 under active constraint
+A0,A0 Arrhenius-stress,Classical physics,5-fold source-aware grouped pooled OOF,220,0.4280257962,0.5973869957,0.7453951680,Physics reference
+Mean,Training-fold mean,Naive baseline,5-fold source-aware grouped pooled OOF,220,-0.0008738220,0.7997554584,0.9860252062,Headline-comparable naive baseline
+NN life-only,Frozen strict Tier1 rerun,Neural network,5-fold source-aware grouped pooled OOF ensemble,220,-3.6207614382,0.9577973891,2.1186300387,Identical outer endpoint but unstable rerun; reported for completeness and not promoted as a headline competitor
+NN life+mechanism,Frozen strict Tier1 rerun,Neural network,5-fold source-aware grouped pooled OOF ensemble,220,-3.6207614382,0.9577973891,2.1186300387,Identical outer endpoint but unstable rerun; reported for completeness and not promoted as a headline competitor
+NN multi-view,Frozen strict Tier1 rerun,Neural network,5-fold source-aware grouped pooled OOF ensemble,220,-13.6724036806,1.4413682927,3.7752784197,Identical outer endpoint but unstable rerun; reported for completeness and not promoted as a headline competitor

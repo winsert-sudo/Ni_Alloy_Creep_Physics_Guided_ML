@@ -1,0 +1,5 @@
+# Release content boundary
+
+Only previously audited aggregate result files are retained, unchanged. Joint summaries disclose cohort statistics but not experimental vectors, exact source/state assignments or row-level target/prediction values. The public registry has no numerical linkage. Source-specific and small-cell metrics, observed condition/composition arrays, trained models and numerical folds are absent. Code input/output names specify required absent file types, not included private content. Aggregates do not imply an open license over their underlying observations. The corresponding author reports approval of all 55 R1 files and institutional authorization for BSD-3-Clause. Project-created candidate content is covered as described in [license scope](../LICENSE_SCOPE.md). Publication remains a separate authorized action.
+
+Packaging screening covers every staged file, including source/reference-key literals, private paths, secrets, forbidden artifacts and cross-file metadata linkage. It is a content review with explicit exclusions; checksum agreement alone does not establish rights or zero theoretical leakage.

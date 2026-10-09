@@ -1,0 +1,5 @@
+training_domain,auxiliary_information,target_domain,validation_protocol,R2,MAE,interpretation
+Tier1 only,None; P0 baseline features,Tier1 (same 220 observations),5-fold source-aware grouped pooled OOF,0.7254395028,0.3830296272,Reference target-domain model
+Tier1 + Tier2,None; naive pooling with P0 features,Tier1 (same 220 observations),5-fold source-aware grouped pooled OOF,0.6892541261,0.4202380149,Negative transfer versus Tier1-only reference
+Tier1 + Tier2,Mechanism-aware descriptors with P0 features,Tier1 (same 220 observations),5-fold source-aware grouped pooled OOF,0.7007800812,0.4164706923,Partial recovery versus naive pooling; remains below Tier1-only reference
+Tier1 only,P3-replace target-free physics representation,Tier1 (same 220 observations),5-fold source-aware grouped pooled OOF,0.7497006308,0.3592029930,Physics-guided representation improves the Tier1-only ML reference

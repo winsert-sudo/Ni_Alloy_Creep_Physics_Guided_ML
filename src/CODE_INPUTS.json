@@ -1,0 +1,241 @@
+{
+  "build_ml_dataset_v1.py": {
+    "folder": "preprocessing",
+    "role": "Relational joins, eligibility, units and log target",
+    "inputs": [
+      "01_DATA/cleaned/RouteB_database_v3/creep_master.csv",
+      "01_DATA/cleaned/RouteB_database_v3/material_state_master.csv",
+      "01_DATA/cleaned/RouteB_database_v3/composition_master.csv",
+      "01_DATA/cleaned/RouteB_database_v3/heat_treatment_master.csv",
+      "01_DATA/cleaned/RouteB_database_v3/material_transfer_classification.csv"
+    ],
+    "outputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1.csv",
+      "03_MODELING/data/baseline_creep_dataset_v1_metadata.json"
+    ],
+    "original_options": "--db-dir, --output-dir, --report-dir (original parser retained)",
+    "deps": []
+  },
+  "build_chemistry_features_v1p1.py": {
+    "folder": "preprocessing",
+    "role": "Qualified Ni balance and preserved chemistry/missingness",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1.csv",
+      "03_MODELING/data/baseline_creep_dataset_v1_metadata.json",
+      "01_DATA/cleaned/RouteB_database_v3/composition_master.csv"
+    ],
+    "outputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/data/baseline_creep_dataset_v1p1_metadata.json"
+    ],
+    "original_options": "None",
+    "deps": []
+  },
+  "create_splits_v1.py": {
+    "folder": "preprocessing",
+    "role": "Frozen GroupKFold source grouping and random reference",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv"
+    ],
+    "outputs": [
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv",
+      "03_MODELING/splits/random_80_20_assignment.csv",
+      "03_MODELING/splits/split_metadata.json"
+    ],
+    "original_options": "--input-path, --output-dir, --n-splits, --random-seed (original parser retained; frozen values 5 and 42)",
+    "deps": []
+  },
+  "train_tier1_baseline_v1.py": {
+    "folder": "modeling",
+    "role": "Tier1 baselines, fold-local preprocessing and OOF metrics",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/baseline_tier1_v1/"
+    ],
+    "original_options": "None",
+    "deps": []
+  },
+  "train_tier12_transfer_baseline_v1.py": {
+    "folder": "modeling",
+    "role": "Tier1+Tier2 transfer with frozen held-out sources",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv",
+      "03_MODELING/results/baseline_tier1_v1/cv_metrics_summary.csv",
+      "03_MODELING/results/baseline_tier1_v1/oof_predictions.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/baseline_tier12_transfer_v1/"
+    ],
+    "original_options": "None",
+    "deps": []
+  },
+  "train_mechanism_transfer_baseline_v1.py": {
+    "folder": "modeling",
+    "role": "Mechanism-descriptor transfer comparison",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv",
+      "03_MODELING/results/baseline_tier1_v1/cv_metrics_summary.csv",
+      "03_MODELING/results/baseline_tier12_transfer_v1/transfer_comparison_with_tier1.csv",
+      "03_MODELING/results/baseline_tier12_transfer_v1/predictions.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/mechanism_transfer_baseline_v1/"
+    ],
+    "original_options": "None",
+    "deps": [
+      "train_tier12_transfer_baseline_v1.py"
+    ]
+  },
+  "train_stress_temperature_physics_v1.py": {
+    "folder": "modeling",
+    "role": "Headline P3-replace XGBoost, fold coordinates, pooled OOF, regional evaluation and figures",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv",
+      "03_MODELING/results/baseline_tier1_v1/error_source_audit/oof_error_table.csv",
+      "03_MODELING/results/baseline_tier1_v1/error_source_audit/temperature_stress_coverage.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/stress_temperature_physics_v1/"
+    ],
+    "original_options": "None",
+    "deps": []
+  },
+  "train_classical_physics_baseline_v1.py": {
+    "folder": "modeling",
+    "role": "Fold-safe A0/A1/L1, bounded fits, comparison metrics and figures",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv",
+      "01_DATA/cleaned/RouteB_database_v3/creep_master.csv",
+      "01_DATA/cleaned/RouteB_database_v3/tensile_master.csv",
+      "03_MODELING/results/stress_temperature_physics_v1/metrics_summary.csv",
+      "03_MODELING/results/stress_temperature_physics_v1/predictions.csv",
+      "03_MODELING/results/baseline_tier1_v1/error_source_audit/oof_error_table.csv",
+      "03_MODELING/results/baseline_tier1_v1/error_source_audit/temperature_stress_coverage.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/classical_physics_baseline_v1/"
+    ],
+    "original_options": "None",
+    "deps": []
+  },
+  "run_within_state_physics_diagnostic_v1.py": {
+    "folder": "modeling",
+    "role": "State descriptive fits and condition-group OOF diagnostic",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/within_state_physics_diagnostic_v1/"
+    ],
+    "original_options": "None",
+    "deps": [
+      "train_classical_physics_baseline_v1.py"
+    ]
+  },
+  "run_state_parameter_learnability_v1.py": {
+    "folder": "modeling",
+    "role": "LOSO effective-parameter audit and reconstruction evaluation",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/results/within_state_physics_diagnostic_v1/state_identifiability.csv",
+      "03_MODELING/results/within_state_physics_diagnostic_v1/state_physics_parameters.csv",
+      "03_MODELING/results/classical_physics_baseline_v1/physics_baseline_oof_predictions.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/state_parameter_learnability_v1/"
+    ],
+    "original_options": "None",
+    "deps": []
+  },
+  "run_unified_ml_physics_benchmark_v1.py": {
+    "folder": "modeling",
+    "role": "Unified OOF ML/physics comparison; reuses NumPy NN implementation",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv",
+      "01_DATA/cleaned/RouteB_database_v3/creep_master.csv",
+      "01_DATA/cleaned/RouteB_database_v3/tensile_master.csv",
+      "03_MODELING/results/stress_temperature_physics_v1/predictions.csv",
+      "03_MODELING/results/baseline_tier1_v1/error_source_audit/oof_error_table.csv",
+      "03_MODELING/results/baseline_tier1_v1/error_source_audit/temperature_stress_coverage.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/unified_ml_physics_benchmark_v1/"
+    ],
+    "original_options": "None",
+    "deps": [
+      "train_multiview_latent_creep_state_v1.py",
+      "train_classical_physics_baseline_v1.py"
+    ]
+  },
+  "train_multiview_latent_creep_state_v1.py": {
+    "folder": "modeling",
+    "role": "Required peer dependency: original NumPy NN, feature encoding and tensile view",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "03_MODELING/splits/source_groupkfold_5fold_assignment.csv",
+      "01_DATA/cleaned/RouteB_database_v3/creep_master.csv",
+      "01_DATA/cleaned/RouteB_database_v3/tensile_master.csv"
+    ],
+    "outputs": [
+      "03_MODELING/results/multiview_latent_creep_state_v1/"
+    ],
+    "original_options": "None",
+    "deps": []
+  },
+  "assemble_paper_figures.py": {
+    "folder": "figures",
+    "role": "Original paper figure generation from lawful private result inputs",
+    "inputs": [
+      "03_MODELING/data/baseline_creep_dataset_v1p1.csv",
+      "05_PAPER_CONVERGENCE/FINAL_MODEL_COMPARISON_TABLE.csv",
+      "05_PAPER_CONVERGENCE/FINAL_TRANSFER_COMPARISON_TABLE.csv",
+      "03_MODELING/results/stress_temperature_physics_v1/predictions.csv",
+      "03_MODELING/results/classical_physics_baseline_v1/physics_baseline_oof_predictions.csv",
+      "03_MODELING/results/within_state_physics_diagnostic_v1/state_physics_parameters.csv",
+      "03_MODELING/results/within_state_physics_diagnostic_v1/state_fit_metrics.csv",
+      "03_MODELING/results/within_state_physics_diagnostic_v1/state_cv_metrics.csv",
+      "03_MODELING/results/state_parameter_learnability_v1/parameter_model_metrics.csv",
+      "03_MODELING/results/state_parameter_learnability_v1/state_parameter_reconstruction_metrics.csv",
+      "03_MODELING/results/unified_ml_physics_benchmark_v1/nn_seed_metrics.csv",
+      "03_MODELING/results/baseline_tier1_v1/feature_importance_summary.csv"
+    ],
+    "outputs": [
+      "05_PAPER_CONVERGENCE/figures/main/",
+      "05_PAPER_CONVERGENCE/figures/supplementary/"
+    ],
+    "original_options": "None; standalone entry point with top-level I/O, not an import-safe library",
+    "deps": []
+  },
+  "assemble_manuscript.py": {
+    "folder": "evaluation",
+    "role": "Original manuscript/table/caption assembly from external components",
+    "inputs": [
+      "05_PAPER_CONVERGENCE/FIGURE_CAPTIONS.md",
+      "05_PAPER_CONVERGENCE/ABSTRACT_DRAFT_V1.md",
+      "05_PAPER_CONVERGENCE/INTRODUCTION_DRAFT_V1.md",
+      "05_PAPER_CONVERGENCE/METHODS_DRAFT_V1.md",
+      "05_PAPER_CONVERGENCE/RESULTS_DRAFT_V1.md",
+      "05_PAPER_CONVERGENCE/DISCUSSION_DRAFT_V1.md",
+      "05_PAPER_CONVERGENCE/CONCLUSIONS_DRAFT_V1.md",
+      "05_PAPER_CONVERGENCE/TITLE_FINAL.md",
+      "05_PAPER_CONVERGENCE/manuscript_tables/Table_1_dataset_summary.md",
+      "05_PAPER_CONVERGENCE/manuscript_tables/Table_2_model_benchmark.md",
+      "05_PAPER_CONVERGENCE/manuscript_tables/Table_3_transfer_learning.md",
+      "05_PAPER_CONVERGENCE/manuscript_tables/Table_4_physics_models.md",
+      "05_PAPER_CONVERGENCE/manuscript_tables/Table_5_parameter_learning.md"
+    ],
+    "outputs": [
+      "05_PAPER_CONVERGENCE/MANUSCRIPT_FINAL_DRAFT_V1.md"
+    ],
+    "original_options": "None; standalone entry point with top-level I/O, not an import-safe library",
+    "deps": []
+  }
+}
