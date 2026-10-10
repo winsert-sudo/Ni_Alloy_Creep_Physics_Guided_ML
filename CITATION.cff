@@ -1,11 +1,13 @@
 cff-version: 1.2.0
-message: "Public research source code. Version 1.0.1 is a documentation-only patch to stable v1.0.0. The preferred paper citation remains unpublished; software release does not imply manuscript publication or acceptance."
+message: "Cite software version 1.0.1 using version DOI 10.5281/zenodo.23275916. Default-branch citation metadata was updated after archiving; the immutable v1.0.1 tag is unchanged. The preferred paper citation remains unpublished and is distinct from the software DOI."
 type: software
 title: "Physics-Guided ML for Ni-Based Alloy Creep"
 version: "1.0.1"
 date-released: "2026-10-09"
 repository-code: "https://github.com/winsert-sudo/Ni_Alloy_Creep_Physics_Guided_ML"
 license: BSD-3-Clause
+doi: "10.5281/zenodo.23275916"
+url: "https://zenodo.org/records/23275916"
 authors:
   - family-names: "Wang"
     given-names: "Chengbin"
